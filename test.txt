@@ -1,1 +1,20 @@
 
+from git import Repo
+
+repo = Repo("/home/vagrant/test/airflow")
+o = repo.remotes.origin
+print (o)
+#branch = repo.git.checkout()
+branch = repo.active_branch
+print (branch)
+
+head = repo.head
+
+print (head)
+
+if head == head:
+  repo.git.checkout("main")
+  o.pull()
+  repo.git.branch("newbranch1")
+  repo.git.checkout("newbranch1")
+  print (repo.git.status())
