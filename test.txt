@@ -1,24 +1,20 @@
-
 from git import Repo
 
 repo = Repo("/home/vagrant/test/airflow")
 o = repo.remotes.origin
-print (o)
-#branch = repo.git.checkout()
 branch = repo.active_branch
-print (branch)
+print ("current brnach is: ", branch)
 
 head = repo.head
-
-print (head)
 
 if head == head:
   repo.git.checkout("main")
   o.pull()
-  repo.git.branch("newbranch2")
-  repo.git.checkout("newbranch2")
+  repo.git.branch("feat-develop3")
+  repo.git.checkout("feat-develop3")
   with open("/home/vagrant/test/airflow/kitchen.yml", "w") as file:
       file.write("cinc: 11.0.0")
       
-print(repo.git.diff())
-print(repo.git.status())
+  repo.git.add("/home/vagrant/test/airflow/kitchen.yml")
+  repo.git.commit("-m","modified code")
+  repo.git.push("--set-upstream", o, repo.head.ref)
