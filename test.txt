@@ -15,6 +15,10 @@ print (head)
 if head == head:
   repo.git.checkout("main")
   o.pull()
-  repo.git.branch("newbranch1")
-  repo.git.checkout("newbranch1")
-  print (repo.git.status())
+  repo.git.branch("newbranch2")
+  repo.git.checkout("newbranch2")
+  with open("/home/vagrant/test/airflow/kitchen.yml", "w") as file:
+      file.write("cinc: 11.0.0")
+      
+print(repo.git.diff())
+print(repo.git.status())
